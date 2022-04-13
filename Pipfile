@@ -8,9 +8,6 @@ flask = {extras = ["async"], version = "*"}
 flask-cors = "*"
 python-dotenv = "*"
 requests = "*"
-flask-aserto = "*"
-aserto = "*"
-aserto-idp = "*"
 typing-extensions = "*"
 
 [dev-packages]
