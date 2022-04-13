@@ -1,13 +1,9 @@
 
-from flask import Flask, g, jsonify, request, abort, Response
+from flask import Flask, g, jsonify, request
 from flask_cors import CORS
-import sqlite3
-import os
-from aserto_idp.oidc import identity_provider
 from .aserto_options import load_aserto_options_from_environment
 from .directory import resolve_user_by_identity, resolve_user_by_user_id
 from .db import list_todos, insert_todo, update_todo, delete_todo
-from jose.exceptions import JWTError
 from flask_aserto import AsertoMiddleware, AuthorizationError
 
 from dotenv import load_dotenv
