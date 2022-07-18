@@ -43,11 +43,5 @@ def get_user(uid):
     user = resolve_user_by_user_id(uid)
     return jsonify(user)
 
-@app.teardown_appcontext
-def close_connection(exception):
-    db = getattr(g, '_database', None)
-    if db is not None:
-        db.close()
-
 if __name__ == '__main__':
     app.run(host="localhost", port=3001, debug=True)
