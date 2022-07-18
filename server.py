@@ -1,10 +1,10 @@
 
 from flask import Flask, g, jsonify, request
 from flask_cors import CORS
-from .aserto_options import load_aserto_options_from_environment
 from .directory import resolve_user_by_identity, resolve_user_by_user_id
 from .db import list_todos, insert_todo, update_todo, delete_todo
 from flask_aserto import AsertoMiddleware, AuthorizationError
+from .aserto_options import load_aserto_options_from_environment
 
 from dotenv import load_dotenv
 load_dotenv()
