@@ -22,15 +22,15 @@ class AsertoMiddlewareOptions(TypedDict):
 def load_aserto_options_from_environment() -> AsertoMiddlewareOptions:
     missing_variables = []
 
-    tenant_id = os.getenv("TENANT_ID", "")
+    tenant_id = os.getenv("ASERTO_TENANT_ID", "")
     if not tenant_id:
-        missing_variables.append("TENANT_ID")
+        missing_variables.append("ASERTO_TENANT_ID")
 
-    authorizer_api_key = os.getenv("AUTHORIZER_API_KEY", "")
-    authorizer_service_url = os.getenv("AUTHORIZER_SERVICE_URL", ASERTO_AUTHORIZER_URL)
+    authorizer_api_key = os.getenv("ASERTO_AUTHORIZER_API_KEY", "")
+    authorizer_service_url = os.getenv("ASERTO_AUTHORIZER_SERVICE_URL", ASERTO_AUTHORIZER_URL)
 
     if not authorizer_api_key:
-        missing_variables.append("AUTHORIZER_API_KEY")
+        missing_variables.append("ASERTO_AUTHORIZER_API_KEY")
 
     oidc_issuer = os.getenv("OIDC_ISSUER", "")
     if not oidc_issuer:
@@ -40,13 +40,13 @@ def load_aserto_options_from_environment() -> AsertoMiddlewareOptions:
     if not oidc_client_id:
         missing_variables.append("OIDC_CLIENT_ID")
 
-    policy_id = os.getenv("POLICY_ID_", "")
+    policy_id = os.getenv("ASERTO_POLICY_ID", "")
     if not policy_id:
-        missing_variables.append("POLICY_ID")
+        missing_variables.append("ASERTO_POLICY_ID")
 
-    policy_path_root = os.getenv("POLICY_PATH_ROOT", "")
+    policy_path_root = os.getenv("ASERTO_POLICY_ROOT", "")
     if not policy_path_root:
-        missing_variables.append("POLICY_PATH_ROOT")
+        missing_variables.append("ASERTO_POLICY_ROOT")
 
     if missing_variables:
         raise EnvironmentError(

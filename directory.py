@@ -3,9 +3,9 @@ from operator import itemgetter
 import requests
 import json
 
-authorization_service_url = os.getenv("AUTHORIZER_SERVICE_URL")
-api_key = os.getenv("AUTHORIZER_API_KEY")
-tenant_id = os.getenv("TENANT_ID")
+authorization_service_url = os.getenv("ASERTO_AUTHORIZER_SERVICE_URL")
+api_key = os.getenv("ASERTO_AUTHORIZER_API_KEY")
+tenant_id = os.getenv("ASERTO_TENANT_ID")
 
 def resolve_user_by_identity(sub):
     response = requests.post(
