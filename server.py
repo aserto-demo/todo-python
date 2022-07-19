@@ -1,4 +1,3 @@
-
 from flask import Flask, g, jsonify, request
 from flask_cors import CORS
 from .directory import resolve_user_by_identity, resolve_user_by_user_id
@@ -34,27 +33,27 @@ def post_todo():
     return jsonify(todo)
 
 
-@app.route('/todo/<oid>', methods=['PUT'])
+@app.route('/todo/<ownerID>', methods=['PUT'])
 @aserto.authorize
-def put_todo(oid):
+def put_todo(ownerID):
     todo = request.get_json()
     update_todo(todo)
     return todo
 
-@app.route('/todo/<oid>', methods=['DELETE'])
+@app.route('/todo/<ownerID>', methods=['DELETE'])
 @aserto.authorize
-def remove_todo(oid):
+def remove_todo(ownerID):
     todo = request.get_json()
     delete_todo(todo)
     resp = jsonify(success=True)
     resp.status_code = 200
     return resp
 
-@app.route('/user/<uid>', methods=['GET'])
+@app.route('/user/<userID>', methods=['GET'])
 @aserto.authorize
-def get_user(uid):
-    uid = resolve_user_by_identity(uid)
-    user = resolve_user_by_user_id(uid)
+def get_user(userID):
+    userByIdentity = resolve_user_by_identity(userID)
+    user = resolve_user_by_user_id(userByIdentity)
     return jsonify(user)
 
 @app.teardown_appcontext
