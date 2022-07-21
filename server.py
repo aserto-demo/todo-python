@@ -23,23 +23,23 @@ def post_todo():
     return jsonify(todo)
 
 
-@app.route('/todo/<oid>', methods=['PUT'])
-def put_todo(oid):
+@app.route('/todo/<ownerID>', methods=['PUT'])
+def put_todo(ownerID):
     todo = request.get_json()
     update_todo(todo)
     return todo
 
-@app.route('/todo/<oid>', methods=['DELETE'])
-def remove_todo(oid):
+@app.route('/todo/<ownerID>', methods=['DELETE'])
+def remove_todo(ownerID):
     todo = request.get_json()
     delete_todo(todo)
     resp = jsonify(success=True)
     resp.status_code = 200
     return resp
 
-@app.route('/user/<uid>', methods=['GET'])
-def get_user(uid):
-    uid = resolve_user_by_identity(uid)
+@app.route('/user/<userID>', methods=['GET'])
+def get_user(userID):
+    uid = resolve_user_by_identity(userID)
     user = resolve_user_by_user_id(uid)
     return jsonify(user)
 
